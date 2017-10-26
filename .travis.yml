@@ -12,8 +12,6 @@ branches:
 #- echo -e "Host 127.0.0.1:8000\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 install:
 - sudo easy_install pip
-- sudo easy_install greenlet
-- pip install cython -e git://github.com/surfly/gevent.git@1.0rc2#egg=gevent
 - pip install --upgrade itsdangerous
 - pip install --upgrade Werkzeug
 - pip install --upgrade Jinja2
