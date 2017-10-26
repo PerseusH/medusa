@@ -1,22 +1,21 @@
 language: python
 python:
-- 2.7
 - 3.6.3
 branches:
   only:
-  - master
-before_install:
-- openssl aes-256-cbc -K $encrypted_24d2fcd902a7_key -iv $encrypted_24d2fcd902a7_iv
-  -in .travis/id_rsa.enc -out ~/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
-- eval $(ssh-agent)
-- ssh-add ~/.ssh/id_rsa
-- cp .travis/ssh_config ~/.ssh/config
-- echo -e "Host 127.0.0.1:8000\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - dev
+#before_install:
+#- chmod 600 ~/.ssh/id_rsa
+#- eval $(ssh-agent)
+#- ssh-add ~/.ssh/id_rsa
+#- cp .travis/ssh_config ~/.ssh/config
+#- echo -e "Host 127.0.0.1:8000\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 install:
 - sudo easy_install pip
-- pip install --upgrade Django
+- pip install --upgrade itsdangerous
+- pip install --upgrade Werkzeug
+- pip install --upgrade Jinja2
+- pip install --upgrade flask
 - pip install gunicorn
 script: 
-- ifconfig
-- gunicorn mypy.wsgi:application -b 127.0.0.1:8000 --reload
+- gunicorn -w 3 -b 127.0.0.1:5000 hello:app -k gevent
