@@ -2,7 +2,7 @@
 
 var webpack = require('webpack');
 
-module.exports = {//注意这里是exports不是export
+module.exports = {//注意这里是exports不是export/////////
     devtool: 'eval-source-map',
     entry: [
         'webpack/hot/dev-server',
@@ -31,7 +31,7 @@ module.exports = {//注意这里是exports不是export
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin() //热模块HMR替换插件
+        new webpack.HotModuleReplacementPlugin() //热模块替换HMR插件
     ],
 
     //webpack-dev-server
