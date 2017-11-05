@@ -2,7 +2,7 @@
 
 var webpack = require('webpack');
 
-module.exports = {//注意这里是exports不是export/////
+module.exports = {//注意这里是exports不是export/////////
     devtool: 'eval-source-map',
     entry: [
         'webpack/hot/dev-server',
