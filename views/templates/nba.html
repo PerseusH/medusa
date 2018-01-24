@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	</head>
+	<body>
+		<h2><center>NBA Games</center></h2>
+		<h4><center>{{ today }}</center></h4>
+		<ul>
+		{% for game in games %}
+			<li>{{ game['title'].encode('utf-8') }}</li>
+			<li>{{ game['score'].encode('utf-8') }}</li>
+			<li>{{ game['brief1'].encode('utf-8') }}</li>
+			<li>{{ game['brief2'].encode('utf-8') }}</li>
+			<li>--------------------------------------------------------------------------------------------</li>
+		{% endfor %}
+		</ul>
+	</body>
+</html>
