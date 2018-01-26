@@ -4,8 +4,23 @@
 		<meta charset="utf-8">
 		<link rel="shortcut icon" href="${url_for('static', filename='favicon.ico')}">
 		<title>${title}</title>
+		<link href="${url_for('static', filename='css/base.css')}" rel="stylesheet">
 	</head>
 	<body>
-		<%block name="main"/>
+		<div class="left-sidebar">${left_sidebar()}</div>
+		<div class="main"><%block name="main"/></div>
 	</body>
 </html>
+
+<%def name="left_sidebar()">
+	<div class="icon">
+		<a href="/"><img src="${url_for('static', filename='pics/perseus.jpg')}" /></a>
+  	</div>
+	<ul>
+		<li><a href="#">Algorithm</a></li>
+		<li><a href="#">Python</a></li>
+		<li><a href="#">Phylosophy</a></li>
+		<li><a href="#">Maxim</a></li>
+		<li><a href="/nba">NBA</a></li>
+	</ul>
+</%def>

@@ -1,0 +1,45 @@
+body {
+  font-family: 'Georgia', serif;
+  color: #3E4349;
+}
+
+.left-sidebar {
+  float: left;
+  width: 200px;
+}
+
+.icon {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0 0 20px;
+}
+
+.icon img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.left-sidebar ul li {
+  margin: 10px 0;
+  list-style: square;
+}
+
+.main {
+  float: left;
+  width: 70%;
+  font-family: cursive;
+  letter-spacing: 1.2px;
+  padding-left: 60px;
+  line-height: 1.5;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  border-bottom: 1px dotted #666;
+  color: #444;
+}
+
+a:hover {
+  border-bottom: 1px solid #666;
+}
