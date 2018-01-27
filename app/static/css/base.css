@@ -1,5 +1,5 @@
 body {
-  font-family: 'Georgia', serif;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; 
   color: #3E4349;
 }
 
@@ -32,7 +32,6 @@ body {
 .main {
   float: left;
   width: 80%;
-  font-family: cursive;
   letter-spacing: .5px;
   margin-left: 20%;
   line-height: 1.5;
@@ -50,4 +49,5 @@ a:hover {
 
 .article-list {
   list-style: lower-roman;
+  line-height: 2;
 }

@@ -1,0 +1,11 @@
+.article-title {
+  position: fixed;
+  line-height: 3;
+  background: #fff;
+  top: -20px;
+  width: 60%;
+}
+
+.text {
+  margin-top: 60px;
+}

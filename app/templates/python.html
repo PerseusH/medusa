@@ -1,5 +1,9 @@
 <%inherit file="base.html"/>
 
+<%block name="more_header">
+	<link href="${url_for('static', filename='css/python.css')}" rel="stylesheet">
+</%block>
+
 <%block name="main">
 	%if filelist:
 		<h1><center>Python</center></h1>
@@ -9,7 +13,9 @@
 		%endfor
 		</ul>
 	%else:
-	<h1>${filetitle}</h1>
-	<%include file="data/python/${filename}.txt"/>
+	<h2 class="article-title">${filetitle}</h2>
+	<div class="text">
+		<%include file="data/python/${filename}.txt"/>
+	</div>
 	%endif
 </%block>
