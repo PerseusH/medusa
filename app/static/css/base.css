@@ -3,15 +3,19 @@ body {
   color: #3E4349;
 }
 
+.content {
+  margin: 0 auto;
+  width: 75%;
+}
+
 .left-sidebar {
-  float: left;
-  width: 200px;
+  position: fixed;
 }
 
 .icon {
   width: 100%;
   overflow: hidden;
-  padding: 20px 0 0 20px;
+  padding: 35px 0 0 20px;
 }
 
 .icon img {
@@ -27,10 +31,10 @@ body {
 
 .main {
   float: left;
-  width: 70%;
+  width: 80%;
   font-family: cursive;
-  letter-spacing: 1.2px;
-  padding-left: 60px;
+  letter-spacing: .5px;
+  margin-left: 20%;
   line-height: 1.5;
 }
 
@@ -42,4 +46,8 @@ a:link, a:visited {
 
 a:hover {
   border-bottom: 1px solid #666;
+}
+
+.article-list {
+  list-style: lower-roman;
 }

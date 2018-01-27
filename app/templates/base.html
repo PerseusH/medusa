@@ -5,10 +5,13 @@
 		<link rel="shortcut icon" href="${url_for('static', filename='favicon.ico')}">
 		<title>${title}</title>
 		<link href="${url_for('static', filename='css/base.css')}" rel="stylesheet">
+		<%block name="more_header"/>	
 	</head>
 	<body>
-		<div class="left-sidebar">${left_sidebar()}</div>
-		<div class="main"><%block name="main"/></div>
+		<div class="content">
+			<div class="left-sidebar">${left_sidebar()}</div>
+			<div class="main"><%block name="main"/></div>
+		</div>
 	</body>
 </html>
 
@@ -18,7 +21,7 @@
   	</div>
 	<ul>
 		<li><a href="#">Algorithm</a></li>
-		<li><a href="#">Python</a></li>
+		<li><a href="/python">Python</a></li>
 		<li><a href="#">Phylosophy</a></li>
 		<li><a href="#">Maxim</a></li>
 		<li><a href="/nba">NBA</a></li>
