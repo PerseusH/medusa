@@ -3,10 +3,11 @@ import time
 from hashlib import sha1
 from flask import Flask
 from flask import request
-from flask import make_response
 from flask_mako import MakoTemplates
 from flask_mako import render_template
 from libs.NBAGames import NBAGames
+from libs.utils import get_last_modified
+from libs.utils import make_response
 from datamap import datamap
 
 
@@ -26,23 +27,21 @@ def index():
     _index_cache = _cache.get("index")
     if not _index_cache:
         _etag = sha1(repr(data_page)).hexdigest()
-        _modified_time = os.path.getmtime("templates/index.html")
-        _modified_time = time.strptime(time.ctime(_modified_time), "%a %b %d %H:%M:%S %Y")
-        _modified_time = time.strftime("%a, %d %b %Y %H:%M:%S GMT", _modified_time)
-        _cache["index"] = _index_cache = (_etag, _modified_time)
-    etag, modified_time = _index_cache
+        _last_modified = get_last_modified("templates/index.html")
+        _cache["index"] = _index_cache = (_etag, _last_modified)
+    etag, last_modified = _index_cache
 
     print request.environ
-    #if request.environ.get("HTTP_IF_NONE_MATCH", None) == etag:
-    if request.environ.get("HTTP_IF_MODIFIED_SINCE", None) == modified_time:
-        response = make_response("", 304)
-    else:
-        response = make_response(data_page)
-        response.headers["Content-Type"] = "text/html; charset=utf-8"
-        response.headers["Etag"] = etag
-        response.headers["Last-Modified"] = modified_time
-    
-    return response
+
+    return make_response(
+            data_page,
+            cached=True,
+            **{
+                "Content-Type": "text/html; charset=utf-8",
+                "Etag": etag,
+                "Last-Modified": last_modified
+                }
+            )
 
 
 @app.route("/hello/")
@@ -62,15 +61,18 @@ def nba():
         _cache["nba"] = _nba_cache = (_games, _etag)
     games, etag = _nba_cache
 
-    if request.environ.get("HTTP_IF_NONE_MATCH", None) == etag:
-        response = make_response("", 304)
-    else:
-        today = time.strftime("%Y-%m-%d", time.localtime())
-        response = make_response(_render("nba.html", "NBAGames", **{"games": games, "today": today}))
-        response.headers["Content-Type"] = "text/html; charset=utf-8"
-        response.headers["Etag"] = etag
+    today = time.strftime("%Y-%m-%d", time.localtime())
 
-    return response
+    data_page = _render("nba.html", "NBAGames", **{"games": games, "today": today})
+
+    return make_response(
+            data_page,
+            cached=True,
+            **{
+                "Content-Type": "text/html; charset=utf-8",
+                "Etag": etag
+                }
+            )
 
 
 @app.route("/python/")
@@ -86,13 +88,10 @@ def python(filename=""):
         return _render("python.html", **{"filename": filename, "filetitle": datamap["Python"][filename]})
 
 
-def _render(f, title=None, **kv):
-    if title:
-        kv["title"] = "%s - %s" % (title_prefix, title)
-    else:
-        kv["title"] = title_prefix
+def _render(templ, title=None, **kv):
+    kv["title"] = "%s - %s" % (title_prefix, title) if title else title_prefix
 
-    return render_template(f, **kv)
+    return render_template(templ, **kv)
 
 
 if __name__ == "__main__":
