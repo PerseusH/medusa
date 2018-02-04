@@ -1,4 +1,5 @@
 <%inherit file="base.html"/>
+<%namespace name="utils" file="utils.html"/>
 
 <%block name="more_header">
 	<link href="${url_for('static', filename='css/python.css')}" rel="stylesheet">
@@ -15,7 +16,7 @@
 	%else:
 	<h2 class="article-title">${filetitle}</h2>
 	<div class="text">
-		<%include file="data/python/${filename}.txt"/>
+		${utils.include(dirpath, filename)}
 	</div>
 	%endif
 </%block>

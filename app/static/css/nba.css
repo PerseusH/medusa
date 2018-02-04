@@ -1,4 +1,11 @@
-.ginfo-last {
-  border-bottom: 1px dotted #999;
-  padding-bottom: 20px;
+.home-team {
+  border-radius: 10px;
+}
+
+.visit-team {
+  border-radius: 10px 10px 0 0;
+}
+
+.visit-team:last-child {
+  margin-bottom: 22px;
 }

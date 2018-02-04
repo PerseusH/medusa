@@ -43,8 +43,8 @@ class NBAGames():
         ginfo_url = 'https://news.zhibo8.cc/nba/%s/%s.htm' % (today, gid)
         gifo_soup = self.parse_html(self.download(ginfo_url).content)
         ginfo['title'] = gifo_soup.find('div', attrs={'class': 'title'}).h1.getText()
-        ginfo['brief1'] = gifo_soup.find('div', attrs={'class': 'content'}).find_all('p')[3].getText()
-        ginfo['brief2'] = gifo_soup.find('div', attrs={'class': 'content'}).find_all('p')[4].getText()
+        ginfo['home_team'] = gifo_soup.find('div', attrs={'class': 'content'}).find_all('p')[3].getText()
+        ginfo['visit_team'] = gifo_soup.find('div', attrs={'class': 'content'}).find_all('p')[4].getText()
     
         score_url = 'https://bifen4pc.qiumibao.com/json/%s/%s.htm' % (today, gid)
         score = self.download(score_url).json()

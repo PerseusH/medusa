@@ -10,7 +10,7 @@
 		% for game in games:
 		<h3>${game['title'].encode('utf-8')}</h3>
 		<h5>${game['score'].encode('utf-8')}</h5>
-		<p>${game['brief1'].encode('utf-8')}</p>
-		<p class="ginfo-last">${game['brief2'].encode('utf-8')}</p>
+		<p class="home-team">${game['home_team'].encode('utf-8')}</p>
+		<p class="visit-team">${game['visit_team'].encode('utf-8')}</p>
 		% endfor
 </%block>

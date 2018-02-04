@@ -1,5 +1,7 @@
 import os
 import time
+import datamap
+import config
 from hashlib import sha1
 from flask import Flask
 from flask import request
@@ -8,12 +10,15 @@ from flask_mako import render_template
 from libs.NBAGames import NBAGames
 from libs.utils import get_last_modified
 from libs.utils import make_response
-from datamap import datamap
 
 
-app = Flask(__name__)
+app = Flask(
+        __name__,
+        template_folder=config.dir_templ,
+        static_folder=config.dir_static
+        )
 mako = MakoTemplates(app)
-title_prefix = "A personal blog belongs to PerseusH"
+_dirdata = config.dir_data
 _cache = dict()
 
 @app.route("/")
@@ -48,6 +53,7 @@ def index():
 @app.route("/hello/<path:username>", methods=["GET", "POST"])
 def hello(username=""):
     banner = "Hello%s%s!" % (username and " ", username)
+
     return _render("hello.html", banner, banner=banner)
 
 
@@ -62,7 +68,6 @@ def nba():
     games, etag = _nba_cache
 
     today = time.strftime("%Y-%m-%d", time.localtime())
-
     data_page = _render("nba.html", "NBAGames", **{"games": games, "today": today})
 
     return make_response(
@@ -78,18 +83,27 @@ def nba():
 @app.route("/python/")
 @app.route("/python/<path:filename>", methods=["GET"])
 def python(filename=""):
+    _dirpath = _dirdata + "/python"
+    _map = datamap.Python
+
     if not filename:
-        filelist = os.listdir("templates/data/python")
-        filelist = {f[:f.rfind(".")]: datamap["Python"][f[:f.rfind(".")]] for f in filelist}
+        filelist = os.listdir(_dirpath)
+        filelist = {f[:f.rfind(".")]: _map[f[:f.rfind(".")]] for f in filelist}
         
         return _render("python.html", filelist=filelist)
     else: 
         filename = filename[:filename.rfind(".")]
-        return _render("python.html", **{"filename": filename, "filetitle": datamap["Python"][filename]})
+
+        return _render("python.html", **{
+            "filename": filename + ".txt",
+            "dirpath": _dirpath,
+            "filetitle": _map[filename]
+            }
+            )
 
 
 def _render(templ, title=None, **kv):
-    kv["title"] = "%s - %s" % (title_prefix, title) if title else title_prefix
+    kv["title"] = "%s - %s" % (config.title_prefix, title) if title else config.title_prefix
 
     return render_template(templ, **kv)
 

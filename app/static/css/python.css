@@ -2,10 +2,14 @@
   position: fixed;
   line-height: 3;
   background: #fff;
-  top: -20px;
-  width: 60%;
+  margin-top: -10px;
+  width: 53%;
+  text-align: center;
+  margin-left: -30px;
 }
 
 .text {
   margin-top: 60px;
+  padding-top: 10px;
+  word-break: break-all;
 }

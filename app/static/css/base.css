@@ -5,17 +5,21 @@ body {
 
 .content {
   margin: 0 auto;
-  width: 75%;
+  width: 60%;
 }
 
 .left-sidebar {
   position: fixed;
+  height: 100%;
+  border-right: solid 1px #dfdfdf;
+  padding-right: 40px;
+  width: 100px;
 }
 
 .icon {
   width: 100%;
   overflow: hidden;
-  padding: 35px 0 0 20px;
+  padding: 15% 0 0 15%;
 }
 
 .icon img {
@@ -26,15 +30,45 @@ body {
 
 .left-sidebar ul li {
   margin: 10px 0;
+  font-size: 14px;
   list-style: square;
 }
 
 .main {
   float: left;
-  width: 80%;
   letter-spacing: .5px;
-  margin-left: 20%;
+  margin-left: 141px;
   line-height: 1.5;
+  width: 80%;
+  min-width: 100px;
+  background-color: #f9f9f9;
+  padding: 0 30px;
+}
+
+.main p, .main h3, .main h5 {
+  margin: 0;
+}
+
+.main p, .main h3 {
+  padding: 16px 8px;
+}
+
+.main p:hover, .main h3:hover {
+  background-color: #efefef;
+}
+
+.main h3, .main h5 {
+  text-align: center;
+}
+
+.main h3 {
+  border-top: 1px dotted #999;
+  padding: 16px 8px;
+  border-radius: 0 0 10px 10px;
+}
+
+.main h5 {
+  margin: 2px 0 3px 0
 }
 
 a:link, a:visited {
@@ -48,6 +82,8 @@ a:hover {
 }
 
 .article-list {
+  padding: 0;
   list-style: lower-roman;
   line-height: 2;
+  margin-left: 20px;
 }

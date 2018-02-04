@@ -1,3 +1,5 @@
+<%namespace name="utils" file="utils.html"/>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,21 +11,11 @@
 	</head>
 	<body>
 		<div class="content">
-			<div class="left-sidebar">${left_sidebar()}</div>
+			<div class="left-sidebar">
+				${utils.icon()}
+				${utils.subject_list()}
+			</div>
 			<div class="main"><%block name="main"/></div>
 		</div>
 	</body>
 </html>
-
-<%def name="left_sidebar()">
-	<div class="icon">
-		<a href="/"><img src="${url_for('static', filename='pics/perseus.jpg')}" /></a>
-  	</div>
-	<ul>
-		<li><a href="#">Algorithm</a></li>
-		<li><a href="/python">Python</a></li>
-		<li><a href="#">Philosophy</a></li>
-		<li><a href="#">Maxim</a></li>
-		<li><a href="/nba">NBA</a></li>
-	</ul>
-</%def>
