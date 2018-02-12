@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
 		<link rel="shortcut icon" href="${url_for('static', filename='favicon.ico')}">
 		<title>${title}</title>
-		<link href="${url_for('static', filename='css/base.css')}" rel="stylesheet">
+		${utils.add_resources("css/base.css")}
 		<%block name="more_header"/>	
 	</head>
 	<body>

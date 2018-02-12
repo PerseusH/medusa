@@ -9,12 +9,25 @@
 		<%
 			from config import subject_list
 		%>
-		%for subject in subject_list:
+		% for subject in subject_list:
 		<li><a href="${subject[1]}">${subject[0]}</a></li>
-		%endfor
+		% endfor
 	</ul>
 </%def>
 
 <%def name="include(_dir, _file)">
 ${open("%s/%s" % (_dir, _file), "rb").read()}
+</%def>
+
+<%def name="add_resources(*files)">
+	% for f in files:
+		% if f.index(".") > 0:
+			<% ext = f.split(".")[1] %>
+			% if ext == "js":
+				<script src="${url_for('static', filename=f)}"></script>
+			% elif ext == "css":
+				<link href="${url_for('static', filename=f)}" rel="stylesheet" />
+			% endif
+		% endif
+	% endfor
 </%def>

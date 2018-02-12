@@ -2,21 +2,22 @@
 <%namespace name="utils" file="utils.html"/>
 
 <%block name="more_header">
-	<link href="${url_for('static', filename='css/python.css')}" rel="stylesheet">
+	${utils.add_resources("css/python.css", "css/prism.css", "css/prism_linum.css")}
 </%block>
 
 <%block name="main">
-	%if filelist:
+	${utils.add_resources("js/prism.js", "js/prism_linum.js")}
+	% if filelist:
 		<h1><center>Python</center></h1>
 		<ul class="article-list">
-		%for f in filelist:
+		% for f in filelist:
 			<li><a href="/python/${f}.html">${filelist[f]}</a></li>
-		%endfor
+		% endfor
 		</ul>
-	%else:
+	% else:
 	<h2 class="article-title">${filetitle}</h2>
 	<div class="text">
 		${utils.include(dirpath, filename)}
 	</div>
-	%endif
+	% endif
 </%block>

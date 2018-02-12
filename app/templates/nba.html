@@ -1,16 +1,17 @@
 <%inherit file="base.html"/>
+<%namespace name="utils" file="utils.html"/>
 
 <%block name="more_header">
-	<link href="${url_for('static', filename='css/nba.css')}" rel="stylesheet">
+	${utils.add_resources("css/nba.css")}
 </%block>
 
 <%block name="main">
-		<h2><center>NBA Games</center></h2>
-		<h4><center>${today}</center></h4>
-		% for game in games:
-		<h3>${game['title'].encode('utf-8')}</h3>
-		<h5>${game['score'].encode('utf-8')}</h5>
-		<p class="home-team">${game['home_team'].encode('utf-8')}</p>
-		<p class="visit-team">${game['visit_team'].encode('utf-8')}</p>
-		% endfor
+	<h2><center>NBA Games</center></h2>
+	<h4><center>${today}</center></h4>
+	% for game in games:
+	<h3>${game['title'].encode('utf-8')}</h3>
+	<h5>${game['score'].encode('utf-8')}</h5>
+	<p class="home-team">${game['home_team'].encode('utf-8')}</p>
+	<p class="visit-team">${game['visit_team'].encode('utf-8')}</p>
+	% endfor
 </%block>
