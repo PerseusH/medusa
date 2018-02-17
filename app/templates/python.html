@@ -10,8 +10,8 @@
 	% if filelist:
 		<h1><center>Python</center></h1>
 		<ul class="article-list">
-		% for f in filelist:
-			<li><a href="/python/${f}.html">${filelist[f]}</a></li>
+		% for _fname, _ftitle in filelist.iteritems():
+			<li><a href="/python/${_fname}.html">${_ftitle}</a></li>
 		% endfor
 		</ul>
 	% else:

@@ -9,8 +9,8 @@
 		<%
 			from config import subject_list
 		%>
-		% for subject in subject_list:
-		<li><a href="${subject[1]}">${subject[0]}</a></li>
+		% for subject, url in subject_list:
+		<li><a href="${url}">${subject}</a></li>
 		% endfor
 	</ul>
 </%def>
