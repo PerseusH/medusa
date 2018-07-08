@@ -5,7 +5,8 @@ config = {
             'password': 'root',
             'port': 3306,
             'host': '127.0.0.1',
-            'database': 'bruce'}
+            'database': 'bruce'
+            }
 
 def get_text(file_name):
     with open('{di}/{fi}'.format(di = dir_path, fi = file_name), 'r') as f:

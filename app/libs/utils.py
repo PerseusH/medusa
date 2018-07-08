@@ -3,6 +3,7 @@
 
 import os
 import time
+import logging
 
 
 def get_last_modified(filename):
@@ -36,3 +37,20 @@ def make_response(data, cached=False, **headers):
         response.headers = headers
 
     return response
+
+
+def _json():
+    """
+    Get the fastest json parser.
+    """
+    import simplejson
+    if bool(getattr(simplejson, '_speedups', False)):
+        json = simplejson
+        logging.info('Using simplejson.')
+    else:
+        import json
+        logging.info('Using json.')
+
+    return json
+
+json = _json()

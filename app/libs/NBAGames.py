@@ -75,7 +75,7 @@ def ec(s):
 
 
 if __name__ == '__main__':
-    for ginfo in Games():
+    for ginfo in NBAGames():
         print ec(ginfo['title'])
         print ec(ginfo['score'])
         print ec(ginfo['brief1'])
