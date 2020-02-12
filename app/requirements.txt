@@ -19,7 +19,7 @@ constantly==15.1.0
 cryptography==2.1.4
 cssselect==1.0.3
 decorator==4.1.2
-Django==1.11.6
+Django==1.11.28
 django-mako==0.1.5rc0
 docutils==0.14
 enum34==1.1.6
