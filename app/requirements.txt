@@ -41,7 +41,7 @@ ipython-genutils==0.2.0
 itsdangerous==0.24
 Jinja2==2.10
 lockfile==0.12.2
-lxml==4.1.1
+lxml==4.6.2
 macholib==1.5.1
 Mako==1.0.7
 MarkupSafe==1.0
