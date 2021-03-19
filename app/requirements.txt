@@ -39,7 +39,7 @@ ipdb==0.10.3
 ipython==5.5.0
 ipython-genutils==0.2.0
 itsdangerous==0.24
-Jinja2==2.10
+Jinja2==2.11.3
 lockfile==0.12.2
 lxml==4.1.1
 macholib==1.5.1
