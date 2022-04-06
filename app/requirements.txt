@@ -124,7 +124,7 @@ stevedore==1.27.1
 supervisor==3.3.3
 Tempita==0.5.2
 traitlets==4.3.2
-Twisted==17.9.0
+Twisted==22.2.0
 txaio==2.8.2
 urllib3==1.22
 uWSGI==2.0.15
