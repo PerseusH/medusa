@@ -112,7 +112,7 @@ queuelib==1.4.2
 requests==2.18.4
 scandir==1.6
 scipy==0.13.0b1
-Scrapy==1.5.0
+Scrapy==2.6.1
 service==0.4.1
 service-identity==17.0.0
 setproctitle==1.1.10
